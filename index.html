@@ -5,307 +5,294 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juraj Kollár - Developer & Designer</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        
         :root {
-            --win10-bg: #f2f2f2;
-            --win10-window: #ffffff;
-            --win10-border: #e5e5e5;
-            --win10-text: #000000;
-            --win10-accent: #0078D4;
-            --win10-hover: #f5f5f5;
-            --win10-active: #e5e5e5;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --accent-dark: #2563eb;
+            --card-bg: rgba(30, 41, 59, 0.5);
+            --grid-bg: linear-gradient(to bottom right, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', -apple-system, system-ui, sans-serif;
+            font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+        }
+
+        .header-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(40, 1fr);
+            grid-template-rows: repeat(20, 1fr);
+            opacity: 0.4;
+            z-index: -1;
+            background: var(--grid-bg);
+            pointer-events: none;
+        }
+
+        .header-grid::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, 
+                rgba(15, 23, 42, 0) 0%,
+                rgba(15, 23, 42, 0.8) 50%,
+                rgba(15, 23, 42, 1) 100%);
         }
 
         body {
-            background-color: var(--win10-bg);
-            color: var(--win10-text);
-            line-height: 1.5;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        /* Windows 10 Taskbar */
-        .win10-taskbar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: rgba(24, 24, 24, 0.95);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        nav {
+            background: var(--bg-secondary);
             backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            z-index: 9999;
-        }
-
-        .start-button {
-            width: 48px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-        }
-
-        .start-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Title Bar */
-        .win10-titlebar {
-            height: 32px;
-            background: var(--win10-window);
-            border-bottom: 1px solid var(--win10-border);
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            user-select: none;
-            position: fixed;
+            padding: 1rem;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
             z-index: 100;
+            margin-bottom: 2rem;
         }
 
-        .window-controls {
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-        }
-
-        .window-control {
-            width: 46px;
-            height: 100%;
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            color: #000;
         }
 
-        .window-control:hover {
-            background: var(--win10-hover);
-        }
-
-        .window-control.close:hover {
-            background: #e81123;
-            color: white;
-        }
-
-        /* Main Content Area */
-        .win10-content {
-            margin-top: 32px;
-            margin-bottom: 40px;
-            padding: 20px;
+        .nav-links {
             display: flex;
-            gap: 20px;
-            height: calc(100vh - 72px);
-            overflow: auto;
+            gap: 2rem;
         }
 
-        /* Windows 10 Navigation Pane */
-        .win10-nav {
-            min-width: 220px;
-            background: var(--win10-window);
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            height: fit-content;
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
-        .nav-item {
-            padding: 12px 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .nav-links a:hover {
+            color: var(--accent);
         }
 
-        .nav-item:hover {
-            background: var(--win10-hover);
-        }
-
-        .nav-item.active {
-            background: var(--win10-active);
-        }
-
-        /* Windows 10 Content Cards */
-        .content-area {
-            flex: 1;
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            align-content: start;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .win10-card {
-            background: var(--win10-window);
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .hero {
+            text-align: left;
+            margin-bottom: 4rem;
+            padding: 6rem 0;
+            position: relative;
             overflow: hidden;
         }
 
-        .card-header {
-            padding: 16px;
-            border-bottom: 1px solid var(--win10-border);
-            font-weight: 600;
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent), #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
-        .card-content {
-            padding: 16px;
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Windows 10 Buttons */
-        .win10-button {
-            padding: 8px 16px;
-            background: var(--win10-accent);
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: var(--accent);
             color: white;
-            border: none;
-            border-radius: 2px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 12px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
             text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
             display: inline-block;
         }
 
-        .win10-button:hover {
-            background: #106ebe;
+        .btn:hover {
+            background: var(--accent-dark);
         }
 
-        /* Acrylic Material Effect */
-        .acrylic {
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.9);
+        .project-links {
+            list-style: none;
+            margin-top: 1rem;
         }
 
-        /* Windows 10 Typography */
-        h1 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
+        .project-links li {
+            margin-bottom: 0.5rem;
         }
 
-        h2 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
+        .project-links a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        /* Windows 10 Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+        .project-links a:hover {
+            color: var(--accent-dark);
         }
 
-        ::-webkit-scrollbar-track {
-            background: transparent;
+        @keyframes neonFlash {
+            0%, 100% {
+                color: #fff;
+                text-shadow: 0 0 10px #0F0,
+                           0 0 20px #0F0,
+                           0 0 30px #0F0;
+            }
+            50% {
+                color: #0F0;
+                text-shadow: 0 0 20px #0F0,
+                           0 0 30px #0F0,
+                           0 0 40px #0F0;
+            }
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #d4d4d4;
-            border-radius: 4px;
+        .neovim-badge {
+            animation: neonFlash 2s infinite;
+            font-family: monospace;
+            font-weight: bold;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: rgba(0, 255, 0, 0.1);
+            margin-top: 1rem;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #bebebe;
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Windows 10 Title Bar -->
-    <div class="win10-titlebar">
-        <span>Portfolio - Juraj Kollár</span>
-        <div class="window-controls">
-            <div class="window-control">─</div>
-            <div class="window-control">□</div>
-            <div class="window-control close">×</div>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="win10-content">
-        <!-- Navigation Pane -->
-        <div class="win10-nav">
-            <div class="nav-item active">
-                <span>About Me</span>
-            </div>
-            <div class="nav-item">
-                <span>Projects</span>
-            </div>
-            <div class="nav-item">
-                <span>Design Work</span>
-            </div>
-            <div class="nav-item">
-                <span>Blog, coming soon</span>
+    <nav>
+        <div class="nav-content">
+            <h2>JK</h2>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#design">Design</a>
             </div>
         </div>
+    </nav>
 
-        <!-- Content Area -->
-        <div class="content-area">
-            <!-- About Card -->
-            <div class="win10-card">
-                <div class="card-header">About Me</div>
-                <div class="card-content">
-                    <h1>Juraj Kollár</h1>
-                    <p style="color: var(--win10-accent)">Python Developer | Designer | Flight simmer</p>
-                    <p style="margin-top: 16px">Hi! I'm a Python developer creating a text editor called XediX. I also do design work for various school events and social media posts for a book. Coding and design are my passions, and I enjoy combining both in my projects.</p>
-                </div>
+    <div class="container">
+        <section class="hero">
+            <div class="header-grid"></div>
+            <h1>Juraj Kollár</h1>
+            <p class="subtitle">Python Developer | Designer | Flight Simmer</p>
+            <p>Hi! I'm a Python developer creating a text editor called XediX. I also do design work for various school events and social media posts for a book. Coding and design are my passions, and I enjoy combining both in my projects.</p>
+            <div class="tech-stack">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">HTML/CSS</span>
+                <span class="tech-badge">Design</span>
+                <div class="neovim-badge">THIS GUY USES NEOVIM FRFRFRFR</div>
+            </div>
+        </section>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Open Source Contributions</h2>
+                <ul class="project-links">
+                    <li><a href="https://github.com/tylerbmusic/GeoFS-Landing-Stats">GeoFS Landing Stats</a></li>
+                    <li><a href="https://github.com/brentvollebregt/auto-py-to-exe">Auto PY to EXE</a></li>
+                    <li><a href="https://github.com/yamadashy/repomix">Repomix</a></li>
+                </ul>
             </div>
 
-            <div class="win10-card">
-                <div class="card-header">Contributed to</div>
-                <div class="card-content">
-                    <ul>
-                        <li><a href="https://github.com/tylerbmusic/GeoFS-Landing-Stats">GeoFS Landing Stats</a></li>
-                        <li><a href="https://github.com/brentvollebregt/auto-py-to-exe">Auto PY to EXE</a></li>
-                    </ul>
-                </div>
+            <div class="card">
+                <h2>XediX Text Editor</h2>
+                <p>A Python-based text editor with syntax highlighting, file management, and more.</p>
+                <a href="https://github.com/mostypc123/XediX" class="btn">View on GitHub</a>
             </div>
 
-            <!-- XediX Card -->
-            <div class="win10-card">
-                <div class="card-header">XediX Text Editor</div>
-                <div class="card-content">
-                    <p>A Python-based text editor with syntax highlighting, file management, and more.</p>
-                    <a href="https://github.com/mostypc123/XediX" class="win10-button">View on GitHub</a>
-                </div>
+            <div class="card">
+                <h2>HTML Element Generator</h2>
+                <p>Tired of writing HTML elements by yourself? Try this tool to generate them automatically.</p>
+                <a href="https://github.com/mostypc123/html-element-generator" class="btn">View on GitHub</a>
             </div>
 
-            <!-- HTML element generator Card -->
-            <div class="win10-card">
-                <div class="card-header">HTML Element Generator</div>
-                <div class="card-content">
-                    <p>Tired of writing HTML elemnts by yourself? Try this.</p>
-                    <a href="https://github.com/mostypc123/html-element-generator" class="win10-button">View on GitHub</a>
-                </div>
-            </div>
-
-            <!-- Design Work Card -->
-            <div class="win10-card">
-                <div class="card-header">Design Work</div>
-                <div class="card-content">
-                    <p>Creating designs for school events and social media posts for "Vaky" by Zdenka Sečkárová Kollárová (in Slovak).</p>
-                    <p style="margin-top: 12px">I also edit videos btw</p>
-                </div>
+            <div class="card">
+                <h2>Design Work</h2>
+                <p>Creating designs for school events and social media posts for "Vaky" by Zdenka Sečkárová Kollárová (in Slovak).</p>
+                <p style="margin-top: 1rem">I also edit videos btw</p>
             </div>
         </div>
-    </div>
-
-    <!-- Windows 10 Taskbar -->
-    <div class="win10-taskbar">
-        <div class="start-button">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M0 0h7.5v7.5H0V0zm8.5 0H16v7.5H8.5V0zM0 8.5h7.5V16H0V8.5zm8.5 0H16V16H8.5V8.5z"/>
-            </svg>
-        </div>
-        <span style="color: white">Juraj Kollár</span>
     </div>
 </body>
 </html>
