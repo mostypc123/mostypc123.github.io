@@ -3,185 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juraj Kollár - Developer & Designer</title>
+    <title>Juraj Kollár - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-        
-        :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --accent: #3b82f6;
-            --accent-dark: #2563eb;
-            --card-bg: rgba(30, 41, 59, 0.5);
-            --grid-bg: linear-gradient(to bottom right, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif;
-        }
-
-        .header-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(40, 1fr);
-            grid-template-rows: repeat(20, 1fr);
-            opacity: 0.4;
-            z-index: -1;
-            background: var(--grid-bg);
-            pointer-events: none;
-        }
-
-        .header-grid::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, 
-                rgba(15, 23, 42, 0) 0%,
-                rgba(15, 23, 42, 0.8) 50%,
-                rgba(15, 23, 42, 1) 100%);
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
+            background: linear-gradient(120deg, #f0f0ff 0%, #fff1f1 100%);
+            color: #111827;
+            line-height: 1.5;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
         }
 
-        nav {
-            background: var(--bg-secondary);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        .profile-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+
+        .role {
+            font-size: 1.1rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
             margin-bottom: 2rem;
         }
 
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
+        .social-link {
+            color: #111827;
+            font-size: 1.5rem;
+            transition: transform 0.2s;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent);
+        .social-link:hover {
+            transform: translateY(-2px);
         }
 
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card h2 {
-            color: var(--accent);
-            margin-bottom: 1rem;
             font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            color: #111827;
         }
 
-        .hero {
-            text-align: left;
-            margin-bottom: 4rem;
-            padding: 6rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
+        .card p {
+            color: #4b5563;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--accent), #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-        }
-        
-        .tech-stack {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .tech-badge {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            background: var(--accent);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.2s;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background: var(--accent-dark);
         }
 
         .project-links {
             list-style: none;
-            margin-top: 1rem;
         }
 
         .project-links li {
@@ -189,108 +110,102 @@
         }
 
         .project-links a {
-            color: var(--accent);
+            color: #111827;
             text-decoration: none;
-            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .project-links a:hover {
-            color: var(--accent-dark);
+            text-decoration: underline;
         }
 
-        @keyframes neonFlash {
-            0%, 100% {
-                color: #fff;
-                text-shadow: 0 0 10px #0F0,
-                           0 0 20px #0F0,
-                           0 0 30px #0F0;
-            }
-            50% {
-                color: #0F0;
-                text-shadow: 0 0 20px #0F0,
-                           0 0 30px #0F0,
-                           0 0 40px #0F0;
-            }
-        }
-
-        .neovim-badge {
-            animation: neonFlash 2s infinite;
-            font-family: monospace;
-            font-weight: bold;
-            display: inline-block;
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            background: rgba(0, 255, 0, 0.1);
+            background: #111827;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
             margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .github-btn:hover {
+            transform: translateY(-1px);
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
             .container {
                 padding: 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-content">
-            <h2>JK</h2>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#design">Design</a>
+    <div class="container">
+        <div class="profile-section">
+            <img src="https://avatars.githubusercontent.com/u/140317448" alt="Profile" class="profile-image">
+            <h1>Juraj Kollár</h1>
+            <p class="role">Developer • Designer • Video Editor</p>
+            
+            <div class="social-links">
+                <a href="mailto:mostypc7@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://github.com/mostypc123" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://reddit.com/user/Ashamed_Cellist6706" class="social-link" target="_blank">
+                    <i class="fab fa-reddit"></i>
+                </a>
+                <a href="https://mostypc123videos.w3spaces.com" class="social-link" target="_blank">
+                    <i class="fas fa-video"></i>
+                </a>
             </div>
         </div>
-    </nav>
-
-    <div class="container">
-        <section class="hero">
-            <div class="header-grid"></div>
-            <h1>Juraj Kollár</h1>
-            <p class="subtitle">Python Developer | Designer | Flight Simmer</p>
-            <p>Hi! I'm a Python developer creating a text editor called XediX. I also do design work for various school events and social media posts for a book. Coding and design are my passions, and I enjoy combining both in my projects.</p>
-            <div class="tech-stack">
-                <span class="tech-badge">Python</span>
-                <span class="tech-badge">HTML/CSS</span>
-                <span class="tech-badge">Design</span>
-                <div class="neovim-badge">THIS GUY USES NEOVIM FRFRFRFR</div>
-            </div>
-        </section>
 
         <div class="grid">
             <div class="card">
                 <h2>Open Source Contributions</h2>
                 <ul class="project-links">
-                    <li><a href="https://github.com/tylerbmusic/GeoFS-Landing-Stats">GeoFS Landing Stats</a></li>
-                    <li><a href="https://github.com/brentvollebregt/auto-py-to-exe">Auto PY to EXE</a></li>
-                    <li><a href="https://github.com/yamadashy/repomix">Repomix</a></li>
+                    <li><a href="https://github.com/tylerbmusic/GeoFS-Landing-Stats"><i class="fas fa-code-branch"></i> GeoFS Landing Stats</a></li>
+                    <li><a href="https://github.com/brentvollebregt/auto-py-to-exe"><i class="fas fa-code-branch"></i> Auto PY to EXE</a></li>
+                    <li><a href="https://github.com/yamadashy/repomix"><i class="fas fa-code-branch"></i> Repomix</a></li>
                 </ul>
             </div>
 
             <div class="card">
                 <h2>XediX Text Editor</h2>
                 <p>A Python-based text editor with syntax highlighting, file management, and more.</p>
-                <a href="https://github.com/mostypc123/XediX" class="btn">View on GitHub</a>
+                <a href="https://github.com/mostypc123/XediX" class="github-btn" target="_blank">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
             </div>
 
             <div class="card">
                 <h2>HTML Element Generator</h2>
                 <p>Tired of writing HTML elements by yourself? Try this tool to generate them automatically.</p>
-                <a href="https://github.com/mostypc123/html-element-generator" class="btn">View on GitHub</a>
+                <a href="https://github.com/mostypc123/html-element-generator" class="github-btn" target="_blank">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
             </div>
 
             <div class="card">
-                <h2>Design Work</h2>
+                <h2>Design & Video Work</h2>
                 <p>Creating designs for school events and social media posts for "Vaky" by Zdenka Sečkárová Kollárová (in Slovak).</p>
-                <p style="margin-top: 1rem">I also edit videos btw</p>
+                <p>Check out my video editing work on my dedicated website!</p>
+                <a href="https://mostypc123videos.w3spaces.com" class="github-btn" target="_blank">
+                    <i class="fas fa-video"></i> View Video Portfolio
+                </a>
             </div>
         </div>
     </div>
