@@ -72,6 +72,34 @@
             transform: translateY(-2px);
         }
 
+        .neovim-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #1e1e1e;
+            color: #7FFF00;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            animation: neonPulse 2s infinite;
+            text-shadow: 0 0 5px #7FFF00;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 10px #7FFF00,
+                           0 0 20px #7FFF00;
+            }
+            50% {
+                opacity: 0.8;
+                box-shadow: 0 0 15px #7FFF00,
+                           0 0 30px #7FFF00;
+            }
+        }
+
         .grid {
             display: flex;
             flex-direction: column;
@@ -139,6 +167,52 @@
             transform: translateY(-1px);
         }
 
+        .neovim-card {
+            background: #1e1e1e;
+            color: #7FFF00;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .neovim-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .neovim-icon {
+            margin-bottom: 1rem;
+            animation: neonPulse 2s infinite;
+            text-shadow: 0 0 10px #7FFF00;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                opacity: 1;
+                text-shadow: 0 0 10px #7FFF00,
+                           0 0 20px #7FFF00;
+            }
+            50% {
+                opacity: 0.8;
+                text-shadow: 0 0 15px #7FFF00,
+                           0 0 30px #7FFF00;
+            }
+        }
+
+        .neovim-card h2 {
+            color: #7FFF00;
+            font-family: 'Courier New', monospace;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .neovim-card p {
+            color: #7FFF00;
+            font-family: 'Courier New', monospace;
+            opacity: 0.9;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -156,6 +230,7 @@
             <img src="https://avatars.githubusercontent.com/u/140317448" alt="Profile" class="profile-image">
             <h1>Juraj Kollár</h1>
             <p class="role">Developer • Designer • Video Editor</p>
+
             
             <div class="social-links">
                 <a href="mailto:mostypc7@gmail.com" class="social-link">
@@ -197,6 +272,14 @@
                 <a href="https://github.com/mostypc123/html-element-generator" class="github-btn" target="_blank">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
+            </div>
+
+            <div class="card neovim-card">
+                <div class="neovim-content">
+                    <i class="fab fa-vuejs fa-4x neovim-icon"></i>
+                    <h2>I USE NEOVIM!!!!!</h2>
+                    <p>Because real developers use terminal-based editors!</p>
+                </div>
             </div>
 
             <div class="card">
