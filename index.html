@@ -206,6 +206,58 @@
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
+        .interests-container {
+                grid-template-columns: 1fr;
+            }
+
+                .interests-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .interest-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f9fafb;
+            transition: transform 0.2s;
+        }
+        
+        .interest-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .interest-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #6366f1;
+        }
+        
+        .interest-item:nth-child(2) .interest-icon {
+            color: #3b82f6;
+        }
+        
+        .interest-item:nth-child(3) .interest-icon {
+            color: #8b5cf6;
+        }
+        
+        .interest-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+        
+        .interest-item p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
 
         .neovim-card p {
             color: #7FFF00;
@@ -256,6 +308,28 @@
                     <li><a href="https://github.com/brentvollebregt/auto-py-to-exe"><i class="fas fa-code-branch"></i> Auto PY to EXE</a></li>
                     <li><a href="https://github.com/yamadashy/repomix"><i class="fas fa-code-branch"></i> Repomix</a></li>
                 </ul>
+            </div>
+
+            <div class="card">
+                <h2>Current Focus & Interests</h2>
+                <div class="interests-container">
+                    <div class="interest-item">
+                        <i class="fab fa-python interest-icon"></i>
+                        <h3>Python Development</h3>
+                        <p>My primary programming language with a deep focus on building tools and applications.</p>
+                    </div>
+                    <div class="interest-item">
+                        <i class="fas fa-gamepad interest-icon"></i>
+                        <h3>Gaming</h3>
+                        <p>Avid gamer enjoying Minecraft, X-Plane, Ace Combat, Roblox, and Ace Patrol.</p>
+
+                    </div>
+                    <div class="interest-item">
+                        <i class="fas fa-headphones interest-icon"></i>
+                        <h3>Music Taste</h3>
+                        <p>Fan of Pierce the Veil, The Cranberries, The Warning, Good Kid, and Oasis.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="card">
