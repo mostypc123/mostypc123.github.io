@@ -12,60 +12,64 @@
       margin: 0;
       padding: 0;
       text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      padding: 20px;
+    }
     header {
-      padding: 50px 20px 20px 20px;
+      padding: 20px;
     }
-
     header img {
       border-radius: 50%;
       width: 150px;
       height: 150px;
       border: 3px solid #424242;
     }
-
     h1 {
       margin: 20px 0 10px 0;
       font-size: 2em;
     }
-
     p {
       margin: 5px 0;
       line-height: 1.5;
     }
-
     a {
       color: #0bb9d8;
       text-decoration: none;
     }
-
     span {
       color:rgb(171, 230, 255);
       text-decoration: dotted;
     }
-
+    hr {
+      width: 100%;
+      border: none;
+      border-top: 1px solid #424242;
+      margin: 20px 0;
+    }
     section {
       max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
       text-align: left;
     }
-
     section h2 {
       border-bottom: 2px solid #f0f0f0;
       padding-bottom: 5px;
     }
-
     ul {
       list-style: none;
       padding: 0;
     }
-
     li {
       margin: 5px 0;
     }
-
     footer {
       margin: 50px 0 20px 0;
       font-size: 0.9em;
@@ -74,18 +78,20 @@
   </style>
 </head>
 <body>
-  <div align="center">
-  <img width="1000" alt="An image with a blurred tree in the background and the red text written 'mostypc123'." src="https://github.com/user-attachments/assets/f4d26fab-f0dc-4057-bea9-fb96109dc630" />
-  <hr>
-  <b><i>person who likes to code</i></b>
-  <p>
-    <small><i>
-      https://mostypc123.is-a.dev - my tiny website<br>
-      https://redroselinux.org - my independent linux distro<br>
-      contact me via <code>mostypc123@redroselinux.org</code><br>
-      not looking for jobs, but the bots will still spam my email<br>
-    </i></small>
-  </p>
-</div>
+  <div class="container">
+    <div align="center">
+      <img width="1000" alt="An image with a blurred tree in the background and the red text written 'mostypc123'." src="https://github.com/user-attachments/assets/f4d26fab-f0dc-4057-bea9-fb96109dc630" />
+      <hr>
+      <b><i>person who likes to code</i></b>
+      <p>
+        <small><i>
+          https://mostypc123.is-a.dev - my tiny website<br>
+          https://redroselinux.org - my independent linux distro<br>
+          contact me via <code>mostypc123@redroselinux.org</code><br>
+          not looking for jobs, but the bots will still spam my email<br>
+        </i></small>
+      </p>
+    </div>
+  </div>
 </body>
 </html>
