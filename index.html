@@ -10,7 +10,7 @@
       background-color: #1e1e1e;
       color: #f0f0f0;
       margin: 0;
-      padding: 0;
+      padding: 20px;
       text-align: center;
       display: flex;
       justify-content: center;
@@ -40,11 +40,11 @@
       line-height: 1.5;
     }
     a {
-      color: #0bb9d8;
+      color: #a7c957;
       text-decoration: none;
     }
     span {
-      color:rgb(171, 230, 255);
+      color: #a7c957;
       text-decoration: dotted;
     }
     hr {
@@ -75,6 +75,38 @@
       font-size: 0.9em;
       color: #aaa;
     }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      header img {
+        width: 120px;
+        height: 120px;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        padding: 10px;
+      }
+      header img {
+        width: 100px;
+        height: 100px;
+      }
+      h1 {
+        font-size: 1.2em;
+      }
+      p {
+        font-size: 0.9em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -85,9 +117,9 @@
       <b><i>person who likes to code</i></b>
       <p>
         <small><i>
-          https://mostypc123.is-a.dev - my tiny website<br>
-          https://redroselinux.org - my independent linux distro<br>
-          contact me via <code>mostypc123@redroselinux.org</code><br>
+          <a href="https://mostypc123.is-a.dev" target="_blank">https://mostypc123.is-a.dev</a> - my tiny website<br>
+          <a href="https://redroselinux.org" target="_blank">https://redroselinux.org</a> - my independent linux distro<br>
+          contact me via <code><a href="mailto:mostypc123@redroselinux.org">mostypc123@redroselinux.org</a></code><br>
           not looking for jobs, but the bots will still spam my email<br>
         </i></small>
       </p>
